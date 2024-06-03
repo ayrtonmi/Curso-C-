@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34525.116
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppDiscos", "AppDiscos\AppDiscos.csproj", "{2FE14828-9D1C-42FF-84CA-7A470F348354}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dominio", "dominio\dominio.csproj", "{61C8ECDC-AAFF-46B1-AEBA-C954128463A4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "negocio", "negocio\negocio.csproj", "{1139C5EB-906C-4885-8DFE-5A626FAE3CFF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2FE14828-9D1C-42FF-84CA-7A470F348354}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FE14828-9D1C-42FF-84CA-7A470F348354}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FE14828-9D1C-42FF-84CA-7A470F348354}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FE14828-9D1C-42FF-84CA-7A470F348354}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61C8ECDC-AAFF-46B1-AEBA-C954128463A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61C8ECDC-AAFF-46B1-AEBA-C954128463A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61C8ECDC-AAFF-46B1-AEBA-C954128463A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61C8ECDC-AAFF-46B1-AEBA-C954128463A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1139C5EB-906C-4885-8DFE-5A626FAE3CFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1139C5EB-906C-4885-8DFE-5A626FAE3CFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1139C5EB-906C-4885-8DFE-5A626FAE3CFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1139C5EB-906C-4885-8DFE-5A626FAE3CFF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8B971322-BED4-45E6-83C9-070060BF8B87}
+	EndGlobalSection
+EndGlobal

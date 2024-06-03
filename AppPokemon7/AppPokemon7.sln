@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34525.116
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppPokemon", "AppPokemon7\AppPokemon.csproj", "{040D97F7-9F94-4BF2-9216-345F8D249209}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dominio", "dominioo\dominio.csproj", "{19209F15-A0F2-4FBE-8A2D-BDB859317FE4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "negocio", "negocio\negocio.csproj", "{867F7A72-FECE-4DB9-A4E1-6102DAAA6B5B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{040D97F7-9F94-4BF2-9216-345F8D249209}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{040D97F7-9F94-4BF2-9216-345F8D249209}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{040D97F7-9F94-4BF2-9216-345F8D249209}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{040D97F7-9F94-4BF2-9216-345F8D249209}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19209F15-A0F2-4FBE-8A2D-BDB859317FE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19209F15-A0F2-4FBE-8A2D-BDB859317FE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19209F15-A0F2-4FBE-8A2D-BDB859317FE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19209F15-A0F2-4FBE-8A2D-BDB859317FE4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{867F7A72-FECE-4DB9-A4E1-6102DAAA6B5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{867F7A72-FECE-4DB9-A4E1-6102DAAA6B5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{867F7A72-FECE-4DB9-A4E1-6102DAAA6B5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{867F7A72-FECE-4DB9-A4E1-6102DAAA6B5B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6D3C0B4F-602F-4735-845E-F3B00DFA524A}
+	EndGlobalSection
+EndGlobal
