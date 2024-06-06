@@ -76,7 +76,7 @@ namespace negocio
             try
             {
                 //Seteamos consulta INSERT
-                datos.setearConsulta("Insert into DISCOS (Titulo, FechaLanzamiento, CantidadCanciones, IdEstilo, IdTipoEdicion, UrlImagenTapa) values (@titulo ,@fecha, @ncanciones, @IdEstilo, @IdEdicion, @UrlImagen)");
+                datos.setearConsulta("Insert into DISCOS (Titulo, FechaLanzamiento, CantidadCanciones, IdEstilo, IdTipoEdicion, UrlImagenTapa, Activo) values (@titulo ,@fecha, @ncanciones, @IdEstilo, @IdEdicion, @UrlImagen, @estado)");
                 //Seteamos parametros del comando: cuando se ejecute la sentencia sql, se reemplaza la variable @ por el valor seteado
                 datos.setearParametro("@titulo", nuevo.Titulo);
                 datos.setearParametro("@fecha", nuevo.FechaLanzamiento);
@@ -84,6 +84,7 @@ namespace negocio
                 datos.setearParametro("@idestilo", nuevo.Estilo.Id);
                 datos.setearParametro("@idedicion", nuevo.Edicion.Id);
                 datos.setearParametro("@UrlImagen", nuevo.UrlImagenTapa);
+                datos.setearParametro("@estado", 1);
                 //Ejecutamos la consulta INSERT
                 datos.ejecutarAccion();
             }

@@ -24,14 +24,23 @@ namespace AppDiscos
 
             cargarGrillas();
             cargarImg(listadiscos[0].UrlImagenTapa);
+            ocultarColumnas();
+        }
+
+        public void ocultarColumnas()
+        {
             dgvDiscos.Columns["UrlImagenTapa"].Visible = false;
             dgvDiscos.Columns["Id"].Visible = false;
         }
 
         private void dgvDiscos_SelectionChanged(object sender, EventArgs e)
         {
+            if(dgvDiscos.CurrentRow != null)//Evaluacion para evitar excepcion al actualizar la lista luego de quitar el filtro
+            {
            Disco discoSeleccionado =(Disco)dgvDiscos.CurrentRow.DataBoundItem;
            cargarImg(discoSeleccionado.UrlImagenTapa);
+
+            }
         }
 
         private void cargarImg(string imagen)
@@ -63,7 +72,7 @@ namespace AppDiscos
         private void cargarGrillas()
         {
             DiscosNegocio negocio = new DiscosNegocio();
-            EstilosNegocio negocio2 = new EstilosNegocio();
+            //EstilosNegocio negocio2 = new EstilosNegocio();
             try
             {
                 listadiscos = negocio.listar();
@@ -137,6 +146,31 @@ namespace AppDiscos
                 MessageBox.Show(ex.ToString());
             }
 
+        }
+
+        private void btnFiltrar_Click(object sender, EventArgs e)
+        {
+            List<Disco> listaFiltrada;
+            string filtro = txtFiltro.Text;
+
+            if(filtro != "")
+            {
+            //METODO FINDALL DE UNA LISTA BUSCA COINCIDENCIAS EN TODOS LOS ELEMENTOS, COMO SI FUERA UN FOREACH
+            //El metodo necesita como parametro una expresion LAMBDA
+
+            //Metodo Contains de los strings, devuelve V o F si lo que viene del filtro está dentro del Titulo que esta analizando
+            listaFiltrada = listadiscos.FindAll(x => x.Titulo.ToUpper().Contains(filtro.ToUpper()) || x.Estilo.Descripcion.ToUpper().Contains(filtro.ToUpper()));
+
+            }
+            else
+            {
+                listaFiltrada = listadiscos;
+            }
+
+            //Una vez filtrada la lista, se asigna al dataSource
+            dgvDiscos.DataSource = null;
+            dgvDiscos.DataSource = listaFiltrada;
+            ocultarColumnas();
         }
     }
 }
