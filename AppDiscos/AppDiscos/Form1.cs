@@ -17,6 +17,7 @@ namespace AppDiscos
         public Form1()
         {
             InitializeComponent();
+            Text = "Discos";
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -150,16 +151,26 @@ namespace AppDiscos
 
         private void btnFiltrar_Click(object sender, EventArgs e)
         {
+           
+        }
+
+        private void txtFiltro_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            
+        }
+
+        private void txtFiltro_TextChanged(object sender, EventArgs e)
+        {
             List<Disco> listaFiltrada;
             string filtro = txtFiltro.Text;
 
-            if(filtro != "")
+            if (filtro.Length >= 3)
             {
-            //METODO FINDALL DE UNA LISTA BUSCA COINCIDENCIAS EN TODOS LOS ELEMENTOS, COMO SI FUERA UN FOREACH
-            //El metodo necesita como parametro una expresion LAMBDA
+                //METODO FINDALL DE UNA LISTA BUSCA COINCIDENCIAS EN TODOS LOS ELEMENTOS, COMO SI FUERA UN FOREACH
+                //El metodo necesita como parametro una expresion LAMBDA
 
-            //Metodo Contains de los strings, devuelve V o F si lo que viene del filtro está dentro del Titulo que esta analizando
-            listaFiltrada = listadiscos.FindAll(x => x.Titulo.ToUpper().Contains(filtro.ToUpper()) || x.Estilo.Descripcion.ToUpper().Contains(filtro.ToUpper()));
+                //Metodo Contains de los strings, devuelve V o F si lo que viene del filtro está dentro del Titulo que esta analizando
+                listaFiltrada = listadiscos.FindAll(x => x.Titulo.ToUpper().Contains(filtro.ToUpper()) || x.Estilo.Descripcion.ToUpper().Contains(filtro.ToUpper()));
 
             }
             else
