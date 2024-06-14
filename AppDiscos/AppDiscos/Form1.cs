@@ -26,6 +26,9 @@ namespace AppDiscos
             cargarGrillas();
             cargarImg(listadiscos[0].UrlImagenTapa);
             ocultarColumnas();
+            cboCampo.Items.Add("Pistas");
+            cboCampo.Items.Add("Título");
+            cboCampo.Items.Add("Género");
         }
 
         public void ocultarColumnas()
@@ -151,7 +154,23 @@ namespace AppDiscos
 
         private void btnFiltrar_Click(object sender, EventArgs e)
         {
-           
+            DiscosNegocio negocio = new DiscosNegocio();
+            try
+            {
+            string campo = cboCampo.SelectedItem.ToString();
+            string criterio = cboCriterio.SelectedItem.ToString();
+            string filtro = txtFiltroAvanzado.Text;
+
+                dgvDiscos.DataSource = negocio.filtrar(campo, criterio, filtro);
+
+
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
         }
 
         private void txtFiltro_KeyPress(object sender, KeyPressEventArgs e)
@@ -182,6 +201,26 @@ namespace AppDiscos
             dgvDiscos.DataSource = null;
             dgvDiscos.DataSource = listaFiltrada;
             ocultarColumnas();
+        }
+
+        private void cboCampo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string opcion = cboCampo.SelectedItem.ToString();
+            if(opcion == "Pistas")
+            {
+
+                cboCriterio.Items.Clear();
+                cboCriterio.Items.Add("Mayor a");
+                cboCriterio.Items.Add("Menor a");
+                cboCriterio.Items.Add("Igual a");
+            }
+            else
+            {
+                cboCriterio.Items.Clear();
+                cboCriterio.Items.Add("Comienza con");
+                cboCriterio.Items.Add("Contiene");
+                cboCriterio.Items.Add("Termina con");
+            }
         }
     }
 }

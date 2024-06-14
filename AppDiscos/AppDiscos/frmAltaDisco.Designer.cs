@@ -43,6 +43,7 @@
             this.pbxDisco = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.dateDisco = new System.Windows.Forms.DateTimePicker();
+            this.btnAgregarImg = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbxDisco)).BeginInit();
             this.SuspendLayout();
             // 
@@ -155,7 +156,7 @@
             // 
             // pbxDisco
             // 
-            this.pbxDisco.Location = new System.Drawing.Point(307, 49);
+            this.pbxDisco.Location = new System.Drawing.Point(314, 49);
             this.pbxDisco.Name = "pbxDisco";
             this.pbxDisco.Size = new System.Drawing.Size(176, 152);
             this.pbxDisco.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -178,11 +179,22 @@
             this.dateDisco.Size = new System.Drawing.Size(121, 20);
             this.dateDisco.TabIndex = 16;
             // 
+            // btnAgregarImg
+            // 
+            this.btnAgregarImg.Location = new System.Drawing.Point(259, 185);
+            this.btnAgregarImg.Name = "btnAgregarImg";
+            this.btnAgregarImg.Size = new System.Drawing.Size(25, 23);
+            this.btnAgregarImg.TabIndex = 17;
+            this.btnAgregarImg.Text = "+";
+            this.btnAgregarImg.UseVisualStyleBackColor = true;
+            this.btnAgregarImg.Click += new System.EventHandler(this.btnAgregarImg_Click);
+            // 
             // frmAltaDisco
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(520, 304);
+            this.Controls.Add(this.btnAgregarImg);
             this.Controls.Add(this.dateDisco);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.pbxDisco);
@@ -225,5 +237,6 @@
         private System.Windows.Forms.PictureBox pbxDisco;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DateTimePicker dateDisco;
+        private System.Windows.Forms.Button btnAgregarImg;
     }
 }

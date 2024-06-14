@@ -9,11 +9,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using negocio;
+using System.IO;
+using System.Configuration;
 
 namespace AppDiscos
 {
     public partial class frmAltaDisco : Form
     {
+        private OpenFileDialog archivo = null;
+
         private Disco disk = null;//Se crea un objeto disco nulo al crear una instancia de la ventana de alta
         public frmAltaDisco()//Se ejecuta al agregar
         {
@@ -61,6 +65,13 @@ namespace AppDiscos
                 negocio.agregar(disk);//Agregamos el objeto disk a la db
                 MessageBox.Show("Agregado exitosamente");
 
+                }
+
+                //guardo imagen si la levantó localmente
+                if (archivo != null && txtUrl.Text.ToUpper().Contains("HTTP"))
+                {
+                    File.Copy(archivo.FileName, ConfigurationManager.AppSettings["img"] + archivo.SafeFileName); //guardamos la imagen en un directorio local
+                                                                                                                 //configurado en el app.config
                 }
 
                 Close();
@@ -137,6 +148,24 @@ namespace AppDiscos
             {
 
                 pbxDisco.Load("https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=612x612&w=0&k=20&c=rnCKVbdxqkjlcs3xH87-9gocETqpspHFXu5dIGB4wuM=");
+            }
+        }
+
+        private void btnAgregarImg_Click(object sender, EventArgs e)
+        {
+            archivo = new OpenFileDialog();//objeto de ventana de dialogo de archivos
+            archivo.Filter = "jpg|*.jpg|png|*.png";
+          
+
+            if(archivo.ShowDialog() == DialogResult.OK)//Si damos okay a la ventana de dialogo
+            {
+               txtUrl.Text = archivo.FileName;//Se asigna la ubicacion de la img al textbox url
+                cargarImg(archivo.FileName);//Se carga la imagen seleccionada
+
+                //guardo la imagen
+                //File.Copy(archivo.FileName, ConfigurationManager.AppSettings["img"]  + archivo.SafeFileName); //guardamos la imagen en un directorio local
+                                                                                 //configurado en el app.config
+                
             }
         }
     }
