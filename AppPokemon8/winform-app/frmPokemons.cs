@@ -23,6 +23,9 @@ namespace winform_app
         private void frmPokemons_Load(object sender, EventArgs e)
         {
             cargarGrilla();//Llamamos al metodo para cargar la grilla
+            cboCampo.Items.Add("Número");
+            cboCampo.Items.Add("Nombre");
+            cboCampo.Items.Add("Descripción");
 
         }
         private void cargarGrilla() 
@@ -126,10 +129,69 @@ namespace winform_app
                 MessageBox.Show(ex.ToString());
             }
         }
+        private bool validarFiltro()
+        {
+            if(cboCampo.SelectedIndex < 0)
+            {
+                MessageBox.Show("Seleccione el campo para filtrar.");
+                return true;
+            }
+            if (cboCriterio.SelectedIndex < 0)
+            {
+                MessageBox.Show("Seleccione el criterio para filtrar.");
+                return true;
+
+            }
+            if (cboCampo.SelectedItem.ToString() == "Número")//Si el campo es Numero
+            {
+                if (string.IsNullOrEmpty(txtFiltroAvanzado.Text))//No puede estar vacio
+                {
+                    MessageBox.Show("El cuadro de Filtro no puede estar vacío.");
+                    return true;
+                }
+                
+                if (!(soloNumeros(txtFiltroAvanzado.Text)))//Si no esta vacio, tampoco puede ser texto
+                {
+                    MessageBox.Show("Ingrese sólo números.");
+                    return true;
+                }
+
+            }
+            return false;
+        }
+
+        private bool soloNumeros(string cadena)
+        {
+            foreach (var caracter in cadena)//Se evalua la cadena en forma de vector
+            {
+                if (!(char.IsNumber(caracter)))//Se evalua si cada caracter de la cadena es numero
+                    return false;
+            }
+            return true;
+        }
 
         private void btnFiltrar_Click(object sender, EventArgs e)
         {
-           
+            PokemonNegocio negocio = new PokemonNegocio();
+            try
+            {
+                if (validarFiltro())
+                {
+                    return;
+
+                }
+            string campo = cboCampo.SelectedItem.ToString();
+            string criterio = cboCriterio.SelectedItem.ToString();
+            string filtro = txtFiltroAvanzado.Text;
+                dgvPokemons.DataSource = negocio.filtrar(campo, criterio, filtro);
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
+
         }
 
         private void txtFiltro_KeyPress(object sender, KeyPressEventArgs e)
@@ -157,6 +219,28 @@ namespace winform_app
             dgvPokemons.DataSource = listaFiltrada;
             ocultarColumnas();
 
+        }
+
+        private void cboCampo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string opcion = cboCampo.SelectedItem.ToString();
+            if(opcion == "Número")
+            {
+                cboCriterio.Items.Clear();
+                cboCriterio.Items.Add("Mayor a");
+                cboCriterio.Items.Add("Menor a");
+                cboCriterio.Items.Add("Igual a");
+
+            }
+            else
+            {
+                cboCriterio.Items.Clear();
+                cboCriterio.Items.Add("Comienza con");
+                cboCriterio.Items.Add("Termina con");
+                cboCriterio.Items.Add("Contiene");
+
+
+            }
         }
     }
 }

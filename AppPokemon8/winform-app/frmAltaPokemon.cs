@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using dominio;
 using negocio;
+using System.Configuration;
 
 
 namespace winform_app
@@ -16,6 +18,7 @@ namespace winform_app
     public partial class frmAltaPokemon : Form
     {
         private Pokemon pokemon = null;
+        private OpenFileDialog archivo = null;
         public frmAltaPokemon()//Al agregar pokemon, se ejecuta este constructor
         {
             InitializeComponent();
@@ -108,6 +111,12 @@ namespace winform_app
 
                 }
 
+                //Guardo imagen si la levantó localmente
+                if(archivo != null && !(tbxImagen.Text.ToUpper().Contains("HTTP")))
+                {
+                    File.Copy(archivo.FileName, ConfigurationManager.AppSettings["img"] + archivo.SafeFileName);
+                }
+
                 Close();//Cerramos  ventana
             }
             catch (Exception ex)
@@ -133,6 +142,22 @@ namespace winform_app
         private void tbxImagen_TextChanged(object sender, EventArgs e)
         {
             cargarImagen(tbxImagen.Text);
+        }
+
+        private void btnAgregarImg_Click(object sender, EventArgs e)
+        {
+            archivo = new OpenFileDialog();//el boton crea una ventana de dialogo de archivos
+            archivo.Filter = "jpg|*.jpg|png|*.png"; //filtramos los tipos de archivo a agregar por tipo
+
+            if(archivo.ShowDialog() == DialogResult.OK)//si presionamos okey en la ventana de dialogo
+            {
+                tbxImagen.Text = archivo.FileName;
+                cargarImagen(archivo.FileName);
+
+                //guardo la imagen
+                //File.Copy(archivo.FileName, ConfigurationManager.AppSettings["img"] + archivo.SafeFileName);
+
+            }
         }
     }
 }
